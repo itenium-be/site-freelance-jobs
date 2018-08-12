@@ -99,17 +99,11 @@ namespace Itenium.FreelanceJobs.DataAccess
         {
             using (var repo = new Repository(_settings.ClonePath))
             {
+                // STAGE & COMMIT
                 Commands.Stage(repo, "*");
                 repo.Commit(commitMsg, GetGitSignature(), GetGitSignature(), new CommitOptions());
 
-
-                //Remote remote = repo.Network.Remotes["origin"];
-                //var options = new PushOptions();
-                //options.CredentialsProvider = (_url, _user, _cred) =>
-                //    new UsernamePasswordCredentials { Username = _creds.Username, Password = _creds.Password };
-                //repo.Network.Push(remote, $"refs/heads/{_settings.GitBranch}", options);
-
-                //LibGit2Sharp.PushOptions options = new LibGit2Sharp.PushOptions();
+                // PUSH
                 var secrets = new SecretStore("git");
                 var auth = new BasicAuthentication(secrets);
                 var creds = auth.GetCredentials(new TargetUri("https://github.com"));
@@ -121,14 +115,6 @@ namespace Itenium.FreelanceJobs.DataAccess
                         Password = creds.Password
                     },
                 };
-
-                //options.CredentialsProvider = new CredentialsHandler(
-                //    (url, usernameFromUrl, types) =>
-                //        new UsernamePasswordCredentials()
-                //        {
-                //            Username = _creds.Username,
-                //            Password = _creds.Password
-                //        });
                 repo.Network.Push(repo.Branches[_settings.GitBranch], options);
             }
         }
