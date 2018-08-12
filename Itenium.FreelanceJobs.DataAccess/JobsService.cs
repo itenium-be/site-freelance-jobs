@@ -33,28 +33,28 @@ namespace Itenium.FreelanceJobs.DataAccess
         {
             if (!Directory.Exists(_settings.ClonePath))
             {
-                Repository.Clone(_settings.GitRepository, _settings.ClonePath);
-                using (var repo = new Repository(_settings.ClonePath))
-                {
-                    var branch = repo.Branches[_settings.GitBranch];
-                    Commands.Checkout(repo, branch);
-                }
+                CloneRepo();
             }
             else
             {
-                using (var repo = new Repository(_settings.ClonePath))
-                {
-                    Commands.Pull(repo, GetGitSignature(), new PullOptions()
-                    {
-                        FetchOptions = new FetchOptions() { }
-                    });
-                }
+                PullRepo();
             }
 
             var freelanceJobs = ReadYaml();
             return freelanceJobs;
         }
 
+        public void SaveJobs(ICollection<FreelanceJob> jobs, FreelanceJob changedJob, ChangeType type)
+        {
+            foreach (var job in jobs.Where(j => !string.IsNullOrWhiteSpace(j.Username)))
+                job.Username = _creds.Username;
+
+            PullRepo();
+            WriteYaml(jobs);
+            CommitAndPush(GetCommitMessage(changedJob, type));
+        }
+
+        #region Yaml
         private IEnumerable<FreelanceJob> ReadYaml()
         {
             var deserializer = new DeserializerBuilder().Build();
@@ -71,27 +71,27 @@ namespace Itenium.FreelanceJobs.DataAccess
             using (var file = File.CreateText(_settings.JobsYaml))
                 serializer.Serialize(file, jobs);
         }
+        #endregion
 
-        public void SaveJobs(ICollection<FreelanceJob> jobs, FreelanceJob changedJob, ChangeType type)
+        #region Git
+        private void CloneRepo()
         {
-            foreach (var job in jobs.Where(j => !string.IsNullOrWhiteSpace(j.Username)))
-                job.Username = _creds.Username;
-
-            WriteYaml(jobs);
-            CommitAndPush(GetCommitMessage(changedJob, type));
+            Repository.Clone(_settings.GitRepository, _settings.ClonePath);
+            using (var repo = new Repository(_settings.ClonePath))
+            {
+                var branch = repo.Branches[_settings.GitBranch];
+                Commands.Checkout(repo, branch);
+            }
         }
 
-        private static string GetCommitMessage(FreelanceJob job, ChangeType type)
+        private void PullRepo()
         {
-            string prefix = $"Freelance job '{job.Title}'";
-            switch (type)
+            using (var repo = new Repository(_settings.ClonePath))
             {
-                case ChangeType.Published:
-                    return prefix + " has been published";
-                case ChangeType.Removed:
-                    return prefix + " has been unpublished";
-                default:
-                    return prefix + " has been updated";
+                Commands.Pull(repo, GetGitSignature(), new PullOptions()
+                {
+                    FetchOptions = new FetchOptions() { }
+                });
             }
         }
 
@@ -119,9 +119,24 @@ namespace Itenium.FreelanceJobs.DataAccess
             }
         }
 
+        private static string GetCommitMessage(FreelanceJob job, ChangeType type)
+        {
+            string prefix = $"Freelance job '{job.Title}'";
+            switch (type)
+            {
+                case ChangeType.Published:
+                    return prefix + " has been published";
+                case ChangeType.Removed:
+                    return prefix + " has been unpublished";
+                default:
+                    return prefix + " has been updated";
+            }
+        }
+
         private Signature GetGitSignature()
         {
             return new Signature(new Identity(_creds.Username, _creds.Email), DateTimeOffset.Now);
         }
+        #endregion
     }
 }
