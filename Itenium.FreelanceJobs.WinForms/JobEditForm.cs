@@ -47,6 +47,7 @@ namespace Itenium.FreelanceJobs.WinForms
             Title.Text = job.Title;
             Username.Text = job.Username;
             DateAdded.Value = job.DateAdded;
+            Description.HtmlEditControl.DocumentText = job.Description;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -58,6 +59,7 @@ namespace Itenium.FreelanceJobs.WinForms
         {
             _job.Title = Title.Text;
             _job.Location = Location.Text;
+            _job.Description = Description.HtmlEditControl.DocumentText;
 
             _onChange?.Invoke(_job);
             Close();

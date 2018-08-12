@@ -11,9 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Itenium.FreelanceJobs.ConsoleApp", "Itenium.FreelanceJobs.ConsoleApp\Itenium.FreelanceJobs.ConsoleApp.csproj", "{E6A8EB9F-E227-4FAE-B432-D607358FC521}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itenium.FreelanceJobs.WinForms", "Itenium.FreelanceJobs.WinForms\Itenium.FreelanceJobs.WinForms.csproj", "{724A65F9-7149-424F-9873-386938D96A36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HtmlEditor", "HtmlEditor", "{05F2B308-5476-4DD9-9943-F194820EDDDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Control", "HtmlEditor\Control\Control.csproj", "{B00AE765-8212-43FD-8E70-768A6C20EE93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,17 +27,20 @@ Global
 		{0348B478-D29B-4834-8C8D-CEDBAAC1A65E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0348B478-D29B-4834-8C8D-CEDBAAC1A65E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0348B478-D29B-4834-8C8D-CEDBAAC1A65E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6A8EB9F-E227-4FAE-B432-D607358FC521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6A8EB9F-E227-4FAE-B432-D607358FC521}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6A8EB9F-E227-4FAE-B432-D607358FC521}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6A8EB9F-E227-4FAE-B432-D607358FC521}.Release|Any CPU.Build.0 = Release|Any CPU
 		{724A65F9-7149-424F-9873-386938D96A36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{724A65F9-7149-424F-9873-386938D96A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{724A65F9-7149-424F-9873-386938D96A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{724A65F9-7149-424F-9873-386938D96A36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B00AE765-8212-43FD-8E70-768A6C20EE93}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{B00AE765-8212-43FD-8E70-768A6C20EE93}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{B00AE765-8212-43FD-8E70-768A6C20EE93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B00AE765-8212-43FD-8E70-768A6C20EE93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B00AE765-8212-43FD-8E70-768A6C20EE93} = {05F2B308-5476-4DD9-9943-F194820EDDDF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68BA3FE3-9A2E-40DE-8663-486ABE10C4E2}

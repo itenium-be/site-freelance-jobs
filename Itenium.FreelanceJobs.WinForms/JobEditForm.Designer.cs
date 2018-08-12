@@ -44,6 +44,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CancelButton = new System.Windows.Forms.Button();
             this.PublishButton = new System.Windows.Forms.Button();
+            this.Description = new ZetaHtmlEditControl.UI.HtmlEditUserControl();
             this.JobDeletedInfoGroupbox.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -145,6 +146,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.JobDeletedInfoGroupbox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.Description, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -233,6 +235,15 @@
             this.PublishButton.UseVisualStyleBackColor = true;
             this.PublishButton.Click += new System.EventHandler(this.PublishButton_Click);
             // 
+            // Description
+            // 
+            this.Description.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Description.IsToolbarVisible = true;
+            this.Description.Location = new System.Drawing.Point(3, 103);
+            this.Description.Name = "Description";
+            this.Description.Size = new System.Drawing.Size(794, 348);
+            this.Description.TabIndex = 3;
+            // 
             // JobEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,5 +283,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button PublishButton;
         private System.Windows.Forms.Button CancelButton;
+        private ZetaHtmlEditControl.UI.HtmlEditUserControl Description;
     }
 }
