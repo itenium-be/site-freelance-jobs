@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using Itenium.FreelanceJobs.DataAccess.Models;
 using LibGit2Sharp;
+using LibGit2Sharp.Handlers;
+using Microsoft.Alm.Authentication;
 using YamlDotNet.RepresentationModel;
 using YamlDotNet.Serialization;
 
@@ -106,6 +108,28 @@ namespace Itenium.FreelanceJobs.DataAccess
                 //options.CredentialsProvider = (_url, _user, _cred) =>
                 //    new UsernamePasswordCredentials { Username = _creds.Username, Password = _creds.Password };
                 //repo.Network.Push(remote, $"refs/heads/{_settings.GitBranch}", options);
+
+                //LibGit2Sharp.PushOptions options = new LibGit2Sharp.PushOptions();
+                var secrets = new SecretStore("git");
+                var auth = new BasicAuthentication(secrets);
+                var creds = auth.GetCredentials(new TargetUri("https://github.com"));
+                var options = new PushOptions
+                {
+                    CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials
+                    {
+                        Username = creds.Username,
+                        Password = creds.Password
+                    },
+                };
+
+                //options.CredentialsProvider = new CredentialsHandler(
+                //    (url, usernameFromUrl, types) =>
+                //        new UsernamePasswordCredentials()
+                //        {
+                //            Username = _creds.Username,
+                //            Password = _creds.Password
+                //        });
+                repo.Network.Push(repo.Branches[_settings.GitBranch], options);
             }
         }
 

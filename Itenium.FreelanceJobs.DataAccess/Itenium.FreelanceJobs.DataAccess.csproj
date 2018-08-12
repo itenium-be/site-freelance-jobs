@@ -6,10 +6,17 @@
 
   <ItemGroup>
     <PackageReference Include="libgit2sharp" Version="0.25.2" />
+    <PackageReference Include="Microsoft.Alm.Authentication" Version="4.3.0" />
     <PackageReference Include="YamlDotNet" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Alm.Authentication">
+      <HintPath>..\packages\Microsoft.Alm.Authentication.4.3.0\lib\net451\Microsoft.Alm.Authentication.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

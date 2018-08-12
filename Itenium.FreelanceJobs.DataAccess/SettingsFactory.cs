@@ -36,7 +36,6 @@ namespace Itenium.FreelanceJobs.DataAccess
             {
                 Username = _config["creds:Username"],
                 Email = _config["creds:Email"],
-                Password = _config["creds:Password"],
             };
             return creds;
         }
