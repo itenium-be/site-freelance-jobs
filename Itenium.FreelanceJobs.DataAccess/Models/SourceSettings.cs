@@ -5,7 +5,6 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
     public class SourceSettings
     {
         private string _clonePath;
-        private string _jobsYaml;
         private readonly string _basePath;
 
         public SourceSettings(string basePath)
@@ -14,7 +13,7 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
         }
 
         public string GitRepository { get; set; }
-        public string GitBranch { get; set; } // todo: not actually used
+        public string GitBranch { get; set; }
 
         public string ClonePath
         {
@@ -24,9 +23,11 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
 
         public string JobsYaml
         {
-            get => _jobsYaml;
-            set => _jobsYaml = Path.Combine(ClonePath, value);
+            get => Path.Combine(ClonePath, RelativeJobYaml);
+            set => RelativeJobYaml = value;
         }
+
+        public string RelativeJobYaml { get; private set; }
 
         public override string ToString() => $"{JobsYaml}";
     }

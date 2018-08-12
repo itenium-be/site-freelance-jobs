@@ -103,7 +103,7 @@ namespace Itenium.FreelanceJobs.WinForms
             frm.SetJob(job, newJob =>
             {
                 _jobs.Add(newJob);
-                _service.SaveJobs(_jobs);
+                _service.SaveJobs(_jobs, newJob, ChangeType.Published);
                 BindGrid();
             });
             frm.Show();
@@ -125,7 +125,7 @@ namespace Itenium.FreelanceJobs.WinForms
                 var frm = new JobEditForm();
                 frm.SetJob(job, updatedJob =>
                 {
-                    _service.SaveJobs(_jobs);
+                    _service.SaveJobs(_jobs, updatedJob, ChangeType.Updated);
                     BindGrid();
                 });
                 frm.Show();
@@ -163,7 +163,7 @@ namespace Itenium.FreelanceJobs.WinForms
                 if (result == DialogResult.Yes)
                 {
                     job.Deleted = !job.Deleted;
-                    _service.SaveJobs(_jobs);
+                    _service.SaveJobs(_jobs, job, toDelete ? ChangeType.Removed : ChangeType.Published);
                 }
                 else
                 {

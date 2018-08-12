@@ -9,6 +9,13 @@ using YamlDotNet.Serialization;
 
 namespace Itenium.FreelanceJobs.DataAccess
 {
+    public enum ChangeType
+    {
+        Published,
+        Updated,
+        Removed,
+    }
+
     public class JobsService
     {
         private readonly GitCredentials _creds;
@@ -25,15 +32,21 @@ namespace Itenium.FreelanceJobs.DataAccess
             if (!Directory.Exists(_settings.ClonePath))
             {
                 Repository.Clone(_settings.GitRepository, _settings.ClonePath);
+                using (var repo = new Repository(_settings.ClonePath))
+                {
+                    var branch = repo.Branches[_settings.GitBranch];
+                    Commands.Checkout(repo, branch);
+                }
             }
             else
             {
-                var repo = new Repository(_settings.ClonePath); // todo: using
-                var signature = new Signature(new Identity(_creds.Username, _creds.Email), DateTimeOffset.Now);
-                Commands.Pull(repo, signature, new PullOptions()
+                using (var repo = new Repository(_settings.ClonePath))
                 {
-                    FetchOptions = new FetchOptions() { }
-                });
+                    Commands.Pull(repo, GetGitSignature(), new PullOptions()
+                    {
+                        FetchOptions = new FetchOptions() { }
+                    });
+                }
             }
 
             var freelanceJobs = ReadYaml();
@@ -57,12 +70,48 @@ namespace Itenium.FreelanceJobs.DataAccess
                 serializer.Serialize(file, jobs);
         }
 
-        public void SaveJobs(ICollection<FreelanceJob> jobs)
+        public void SaveJobs(ICollection<FreelanceJob> jobs, FreelanceJob changedJob, ChangeType type)
         {
             foreach (var job in jobs.Where(j => !string.IsNullOrWhiteSpace(j.Username)))
                 job.Username = _creds.Username;
 
             WriteYaml(jobs);
+            CommitAndPush(GetCommitMessage(changedJob, type));
+        }
+
+        private static string GetCommitMessage(FreelanceJob job, ChangeType type)
+        {
+            string prefix = $"Freelance job '{job.Title}'";
+            switch (type)
+            {
+                case ChangeType.Published:
+                    return prefix + " has been published";
+                case ChangeType.Removed:
+                    return prefix + " has been unpublished";
+                default:
+                    return prefix + " has been updated";
+            }
+        }
+
+        private void CommitAndPush(string commitMsg)
+        {
+            using (var repo = new Repository(_settings.ClonePath))
+            {
+                Commands.Stage(repo, "*");
+                repo.Commit(commitMsg, GetGitSignature(), GetGitSignature(), new CommitOptions());
+
+
+                //Remote remote = repo.Network.Remotes["origin"];
+                //var options = new PushOptions();
+                //options.CredentialsProvider = (_url, _user, _cred) =>
+                //    new UsernamePasswordCredentials { Username = _creds.Username, Password = _creds.Password };
+                //repo.Network.Push(remote, $"refs/heads/{_settings.GitBranch}", options);
+            }
+        }
+
+        private Signature GetGitSignature()
+        {
+            return new Signature(new Identity(_creds.Username, _creds.Email), DateTimeOffset.Now);
         }
     }
 }
