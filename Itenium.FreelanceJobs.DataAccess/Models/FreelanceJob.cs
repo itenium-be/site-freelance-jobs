@@ -5,6 +5,15 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
 {
     public class FreelanceJob
     {
+        private static int _newId;
+
+        public FreelanceJob()
+        {
+            Id = ++_newId;
+        }
+
+        public int Id { get; set; }
+
         [YamlMember(Alias = "title")]
         public string Title { get; set; }
 

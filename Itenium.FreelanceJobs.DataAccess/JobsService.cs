@@ -45,5 +45,11 @@ namespace Itenium.FreelanceJobs.DataAccess
             var jobs = deserializer.Deserialize<IEnumerable<FreelanceJob>>(File.OpenText(_settings.JobsYaml));
             return jobs;
         }
+
+        public void ToggleJob(FreelanceJob job)
+        {
+            job.Deleted = !job.Deleted;
+            // todo: actually save
+        }
     }
 }
