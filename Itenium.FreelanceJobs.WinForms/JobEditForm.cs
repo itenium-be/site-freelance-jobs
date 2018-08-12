@@ -35,6 +35,14 @@ namespace Itenium.FreelanceJobs.WinForms
             _onChange = onChange;
 
             JobDeletedInfoGroupbox.Text = job.Deleted ? "DELETED Job" : "PUBLISHED Job";
+            if (string.IsNullOrWhiteSpace(job.Username))
+            {
+                JobDeletedInfoGroupbox.Text = "NEW Job";
+            }
+            if (job.Deleted)
+            {
+                PublishButton.Text = "Save Changes";
+            }
             Location.Text = job.Location;
             Title.Text = job.Title;
             Username.Text = job.Username;
