@@ -1,8 +1,9 @@
-﻿using System;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Logging.Serilog;
+using Itenium.FreelanceJobs.DataAccess;
+using Microsoft.Extensions.Configuration;
 
-namespace Itenium.FreelanceJobs
+namespace Itenium.FreelanceJobs.UI
 {
     class Program
     {

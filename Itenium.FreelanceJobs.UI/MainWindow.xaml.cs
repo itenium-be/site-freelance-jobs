@@ -2,7 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace Itenium.FreelanceJobs
+namespace Itenium.FreelanceJobs.UI
 {
     public class MainWindow : Window
     {

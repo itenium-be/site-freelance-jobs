@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using Avalonia.Markup.Xaml;
 
-namespace Itenium.FreelanceJobs
+namespace Itenium.FreelanceJobs.UI
 {
     public class App : Application
     {
