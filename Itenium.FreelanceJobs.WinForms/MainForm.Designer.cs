@@ -36,8 +36,16 @@
             this.UsernameColumn = new System.Data.DataColumn();
             this.DateAddedColumn = new System.Data.DataColumn();
             this.DeletedColumn = new System.Data.DataColumn();
+            this.IdGridColumn = new System.Data.DataColumn();
             this.FreelanceJobsGrid = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.SearchNeedle = new System.Windows.Forms.TextBox();
+            this.SeeDeletedCheckbox = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.NewJobButton = new System.Windows.Forms.Button();
             this.TitleGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LocationGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,22 +53,14 @@
             this.DateAddedGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeletedGridColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.EditGridColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.SearchNeedle = new System.Windows.Forms.TextBox();
-            this.NewJobButton = new System.Windows.Forms.Button();
-            this.SeeDeletedCheckbox = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.SearchButton = new System.Windows.Forms.Button();
-            this.IdGridColumn = new System.Data.DataColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FreelanceJobsGrid)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataSet1
@@ -109,6 +109,10 @@
             this.DeletedColumn.ColumnName = "Deleted";
             this.DeletedColumn.DataType = typeof(bool);
             // 
+            // IdGridColumn
+            // 
+            this.IdGridColumn.ColumnName = "Id";
+            // 
             // FreelanceJobsGrid
             // 
             this.FreelanceJobsGrid.AllowUserToAddRows = false;
@@ -131,7 +135,7 @@
             this.FreelanceJobsGrid.Location = new System.Drawing.Point(3, 68);
             this.FreelanceJobsGrid.Name = "FreelanceJobsGrid";
             this.FreelanceJobsGrid.Size = new System.Drawing.Size(1068, 424);
-            this.FreelanceJobsGrid.TabIndex = 0;
+            this.FreelanceJobsGrid.TabIndex = 4;
             this.FreelanceJobsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FreelanceJobsGrid_CellContentClick);
             this.FreelanceJobsGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.FreelanceJobsGrid_CellValueChanged);
             // 
@@ -149,6 +153,80 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.66666F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1074, 495);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1074, 65);
+            this.panel1.TabIndex = 1;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.SearchButton);
+            this.groupBox2.Controls.Add(this.SearchNeedle);
+            this.groupBox2.Controls.Add(this.SeeDeletedCheckbox);
+            this.groupBox2.Location = new System.Drawing.Point(209, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(392, 59);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filters";
+            // 
+            // SearchButton
+            // 
+            this.SearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchButton.Location = new System.Drawing.Point(193, 14);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(104, 39);
+            this.SearchButton.TabIndex = 2;
+            this.SearchButton.Text = "&Search";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
+            // SearchNeedle
+            // 
+            this.SearchNeedle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchNeedle.Location = new System.Drawing.Point(7, 19);
+            this.SearchNeedle.Name = "SearchNeedle";
+            this.SearchNeedle.Size = new System.Drawing.Size(180, 31);
+            this.SearchNeedle.TabIndex = 1;
+            // 
+            // SeeDeletedCheckbox
+            // 
+            this.SeeDeletedCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SeeDeletedCheckbox.AutoSize = true;
+            this.SeeDeletedCheckbox.Location = new System.Drawing.Point(303, 26);
+            this.SeeDeletedCheckbox.Name = "SeeDeletedCheckbox";
+            this.SeeDeletedCheckbox.Size = new System.Drawing.Size(83, 17);
+            this.SeeDeletedCheckbox.TabIndex = 3;
+            this.SeeDeletedCheckbox.Text = "See &deleted";
+            this.SeeDeletedCheckbox.UseVisualStyleBackColor = true;
+            this.SeeDeletedCheckbox.CheckedChanged += new System.EventHandler(this.SeeDeletedCheckbox_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.NewJobButton);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 59);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            // 
+            // NewJobButton
+            // 
+            this.NewJobButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewJobButton.Location = new System.Drawing.Point(20, 14);
+            this.NewJobButton.Name = "NewJobButton";
+            this.NewJobButton.Size = new System.Drawing.Size(172, 38);
+            this.NewJobButton.TabIndex = 0;
+            this.NewJobButton.Text = "&New Job";
+            this.NewJobButton.UseVisualStyleBackColor = true;
+            this.NewJobButton.Click += new System.EventHandler(this.NewJobButton_Click);
             // 
             // TitleGridColumn
             // 
@@ -190,7 +268,7 @@
             // DeletedGridColumn
             // 
             this.DeletedGridColumn.DataPropertyName = "Deleted";
-            this.DeletedGridColumn.HeaderText = "Deleted";
+            this.DeletedGridColumn.HeaderText = "Toggle deleted";
             this.DeletedGridColumn.Name = "DeletedGridColumn";
             // 
             // EditGridColumn
@@ -199,84 +277,6 @@
             this.EditGridColumn.Name = "EditGridColumn";
             this.EditGridColumn.Text = "Edit";
             this.EditGridColumn.UseColumnTextForButtonValue = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1074, 65);
-            this.panel1.TabIndex = 1;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.NewJobButton);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 59);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            // 
-            // SearchNeedle
-            // 
-            this.SearchNeedle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchNeedle.Location = new System.Drawing.Point(7, 19);
-            this.SearchNeedle.Name = "SearchNeedle";
-            this.SearchNeedle.Size = new System.Drawing.Size(180, 31);
-            this.SearchNeedle.TabIndex = 4;
-            // 
-            // NewJobButton
-            // 
-            this.NewJobButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewJobButton.Location = new System.Drawing.Point(20, 14);
-            this.NewJobButton.Name = "NewJobButton";
-            this.NewJobButton.Size = new System.Drawing.Size(172, 38);
-            this.NewJobButton.TabIndex = 3;
-            this.NewJobButton.Text = "New Job";
-            this.NewJobButton.UseVisualStyleBackColor = true;
-            this.NewJobButton.Click += new System.EventHandler(this.NewJobButton_Click);
-            // 
-            // SeeDeletedCheckbox
-            // 
-            this.SeeDeletedCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SeeDeletedCheckbox.AutoSize = true;
-            this.SeeDeletedCheckbox.Location = new System.Drawing.Point(303, 26);
-            this.SeeDeletedCheckbox.Name = "SeeDeletedCheckbox";
-            this.SeeDeletedCheckbox.Size = new System.Drawing.Size(83, 17);
-            this.SeeDeletedCheckbox.TabIndex = 2;
-            this.SeeDeletedCheckbox.Text = "See deleted";
-            this.SeeDeletedCheckbox.UseVisualStyleBackColor = true;
-            this.SeeDeletedCheckbox.CheckedChanged += new System.EventHandler(this.SeeDeletedCheckbox_CheckedChanged);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.SearchButton);
-            this.groupBox2.Controls.Add(this.SearchNeedle);
-            this.groupBox2.Controls.Add(this.SeeDeletedCheckbox);
-            this.groupBox2.Location = new System.Drawing.Point(209, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(392, 59);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filters";
-            // 
-            // SearchButton
-            // 
-            this.SearchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchButton.Location = new System.Drawing.Point(193, 14);
-            this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(104, 39);
-            this.SearchButton.TabIndex = 5;
-            this.SearchButton.Text = "Search";
-            this.SearchButton.UseVisualStyleBackColor = true;
-            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
-            // 
-            // IdGridColumn
-            // 
-            this.IdGridColumn.ColumnName = "Id";
             // 
             // Id
             // 
@@ -302,9 +302,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.FreelanceJobsGrid)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -320,13 +320,6 @@
         private System.Data.DataColumn DeletedColumn;
         private System.Windows.Forms.DataGridView FreelanceJobsGrid;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TitleGridColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LocationGridColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionGridColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UsernameGridColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateAddedGridColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn DeletedGridColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn EditGridColumn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button SearchButton;
@@ -335,6 +328,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button NewJobButton;
         private System.Data.DataColumn IdGridColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TitleGridColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LocationGridColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionGridColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UsernameGridColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateAddedGridColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn DeletedGridColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn EditGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
     }
 }

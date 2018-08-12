@@ -98,7 +98,15 @@ namespace Itenium.FreelanceJobs.WinForms
 
         private void NewJobButton_Click(object sender, EventArgs e)
         {
-
+            var frm = new JobEditForm();
+            var job = new FreelanceJob();
+            frm.SetJob(job, newJob =>
+            {
+                _jobs.Add(newJob);
+                _service.SaveJobs(_jobs);
+                BindGrid();
+            });
+            frm.Show();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -108,25 +116,41 @@ namespace Itenium.FreelanceJobs.WinForms
 
         private void FreelanceJobsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // EDIT a FreelanceJob
             var senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                MessageBox.Show("Clicky");
+                var job = GetJob(e.RowIndex);
+
+                var frm = new JobEditForm();
+                frm.SetJob(job, updatedJob =>
+                {
+                    _service.SaveJobs(_jobs);
+                    BindGrid();
+                });
+                frm.Show();
             }
 
             FreelanceJobsGrid.EndEdit();
         }
 
+        private FreelanceJob GetJob(int rowIndex)
+        {
+            var row = FreelanceJobsGrid.Rows[rowIndex];
+            int id = int.Parse(row.Cells[nameof(FreelanceJob.Id)].Value.ToString());
+            var job = _jobs.Single(x => x.Id == id);
+            return job;
+        }
+
         private void FreelanceJobsGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            // DELETE / RESTORE a FreelanceJob
             var senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
             {
-                var row = FreelanceJobsGrid.Rows[e.RowIndex];
-                int id = int.Parse(row.Cells[nameof(FreelanceJob.Id)].Value.ToString());
-                var job = _jobs.Single(x => x.Id == id);
+                var job = GetJob(e.RowIndex);
 
-                bool toDelete = (bool)row.Cells[DeletedGridColumn.Name].Value;
+                bool toDelete = !job.Deleted;
                 var (actionWord, yes, no) = GetDeleteMessageParts(toDelete);
 
                 var result = MessageBox.Show(
@@ -138,11 +162,13 @@ namespace Itenium.FreelanceJobs.WinForms
 
                 if (result == DialogResult.Yes)
                 {
-                    _service.ToggleJob(job);
+                    job.Deleted = !job.Deleted;
+                    _service.SaveJobs(_jobs);
                 }
                 else
                 {
                     FreelanceJobsGrid.CellValueChanged -= FreelanceJobsGrid_CellValueChanged;
+                    var row = FreelanceJobsGrid.Rows[e.RowIndex];
                     row.Cells[DeletedGridColumn.Name].Value = !toDelete;
                     FreelanceJobsGrid.CellValueChanged += FreelanceJobsGrid_CellValueChanged;
                 }

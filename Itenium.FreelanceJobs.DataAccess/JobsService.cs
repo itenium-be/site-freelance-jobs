@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Itenium.FreelanceJobs.DataAccess.Models;
 using LibGit2Sharp;
 using YamlDotNet.RepresentationModel;
@@ -42,14 +43,26 @@ namespace Itenium.FreelanceJobs.DataAccess
         private IEnumerable<FreelanceJob> ReadYaml()
         {
             var deserializer = new DeserializerBuilder().Build();
-            var jobs = deserializer.Deserialize<IEnumerable<FreelanceJob>>(File.OpenText(_settings.JobsYaml));
-            return jobs;
+            using (var file = File.OpenText(_settings.JobsYaml))
+            {
+                var jobs = deserializer.Deserialize<IEnumerable<FreelanceJob>>(file);
+                return jobs;
+            }
         }
 
-        public void ToggleJob(FreelanceJob job)
+        private void WriteYaml(IEnumerable<FreelanceJob> jobs)
         {
-            job.Deleted = !job.Deleted;
-            // todo: actually save
+            var serializer = new SerializerBuilder().Build();
+            using (var file = File.CreateText(_settings.JobsYaml))
+                serializer.Serialize(file, jobs);
+        }
+
+        public void SaveJobs(ICollection<FreelanceJob> jobs)
+        {
+            foreach (var job in jobs.Where(j => !string.IsNullOrWhiteSpace(j.Username)))
+                job.Username = _creds.Username;
+
+            WriteYaml(jobs);
         }
     }
 }

@@ -10,8 +10,10 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
         public FreelanceJob()
         {
             Id = ++_newId;
+            DateAdded = DateTime.Now.Date;
         }
 
+        [YamlIgnore]
         public int Id { get; set; }
 
         [YamlMember(Alias = "title")]
