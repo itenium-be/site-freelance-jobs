@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Itenium.FreelanceJobs.Conso
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Itenium.FreelanceJobs.UI", "Itenium.FreelanceJobs.UI\Itenium.FreelanceJobs.UI.csproj", "{4CB43FD4-5840-4050-953C-B9489CC51618}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Itenium.FreelanceJobs.WinForms", "Itenium.FreelanceJobs.WinForms\Itenium.FreelanceJobs.WinForms.csproj", "{724A65F9-7149-424F-9873-386938D96A36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4CB43FD4-5840-4050-953C-B9489CC51618}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CB43FD4-5840-4050-953C-B9489CC51618}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CB43FD4-5840-4050-953C-B9489CC51618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724A65F9-7149-424F-9873-386938D96A36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724A65F9-7149-424F-9873-386938D96A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724A65F9-7149-424F-9873-386938D96A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724A65F9-7149-424F-9873-386938D96A36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

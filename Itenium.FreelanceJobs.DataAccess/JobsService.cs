@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection.Metadata;
 using Itenium.FreelanceJobs.DataAccess.Models;
 using LibGit2Sharp;
 using YamlDotNet.RepresentationModel;

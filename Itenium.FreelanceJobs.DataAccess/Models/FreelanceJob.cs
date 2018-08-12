@@ -20,6 +20,9 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
         [YamlMember(Alias = "date")]
         public DateTime DateAdded { get; set; }
 
+        [YamlMember(Alias = "deleted")]
+        public bool Deleted { get; set; }
+
         public override string ToString() => $"{Title} ({Location})";
     }
 }
