@@ -1,7 +1,7 @@
 Freelance Jobs Management
 =========================
 
-WinForms app to manage jobs on: http://itenium.be/freelance/
+WinForms app to manage jobs on: https://itenium.be/freelance/
 
 Configuration in `appsettings.json`.
 
