@@ -23,7 +23,20 @@ namespace Itenium.FreelanceJobs.WinForms
 
         private void JobEditForm_Load(object sender, EventArgs e)
         {
-            var locs = new[] {"Antwerpen", "Gent", "Brussel"};
+            var locs = new[] {"Gent",
+                "Brussel",
+                "Antwerpen",
+                "Leuven",
+                "Mechelen",
+                "Aalst",
+                "Hasselt",
+                "Oost Vlaanderen",
+                "West Vlaanderen",
+                "Limburg",
+                "Waals Brabant",
+                "Kempen",
+                "Vlaams Brabant"
+            };
 
             foreach (var loc in locs)
                 Location.Items.Add(loc);
