@@ -57,7 +57,8 @@ namespace Itenium.FreelanceJobs.WinForms
                 row[nameof(FreelanceJob.Description)] = job.Description;
                 row[nameof(FreelanceJob.Username)] = job.Username;
                 row[nameof(FreelanceJob.DateAdded)] = job.DateAdded;
-                row[nameof(FreelanceJob.Deleted)] = job.Deleted;
+                row[nameof(FreelanceJob.Published)] = job.Published;
+                row[nameof(FreelanceJob.Slug)] = job.Slug;
                 dt.Rows.Add(row);
             }
         }
@@ -66,7 +67,7 @@ namespace Itenium.FreelanceJobs.WinForms
         {
             IEnumerable<FreelanceJob> jobs = _jobs;
             if (!SeeDeletedCheckbox.Checked)
-                jobs = jobs.Where(x => !x.Deleted);
+                jobs = jobs.Where(x => x.Published);
 
             string needle = SearchNeedle.Text;
             if (!string.IsNullOrWhiteSpace(needle))
@@ -100,6 +101,7 @@ namespace Itenium.FreelanceJobs.WinForms
         {
             var frm = new JobEditForm();
             var job = new FreelanceJob();
+            job.Published = true;
             frm.SetJob(job, newJob =>
             {
                 _jobs.Add(newJob);
@@ -150,7 +152,7 @@ namespace Itenium.FreelanceJobs.WinForms
             {
                 var job = GetJob(e.RowIndex);
 
-                bool toDelete = !job.Deleted;
+                bool toDelete = job.Published;
                 var (actionWord, yes, no) = GetDeleteMessageParts(toDelete);
 
                 var result = MessageBox.Show(
@@ -162,14 +164,14 @@ namespace Itenium.FreelanceJobs.WinForms
 
                 if (result == DialogResult.Yes)
                 {
-                    job.Deleted = !job.Deleted;
+                    job.Published = !job.Published;
                     _service.SaveJobs(_jobs, job, toDelete ? ChangeType.Removed : ChangeType.Published);
                 }
                 else
                 {
                     FreelanceJobsGrid.CellValueChanged -= FreelanceJobsGrid_CellValueChanged;
                     var row = FreelanceJobsGrid.Rows[e.RowIndex];
-                    row.Cells[DeletedGridColumn.Name].Value = !toDelete;
+                    row.Cells[DeletedGridColumn.Name].Value = toDelete;
                     FreelanceJobsGrid.CellValueChanged += FreelanceJobsGrid_CellValueChanged;
                 }
             }

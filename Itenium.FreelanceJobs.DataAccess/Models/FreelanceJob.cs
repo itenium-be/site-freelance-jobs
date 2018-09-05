@@ -6,6 +6,7 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
     public class FreelanceJob
     {
         private static int _newId;
+        private string _title;
 
         public FreelanceJob()
         {
@@ -13,11 +14,19 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
             DateAdded = DateTime.Now.Date;
         }
 
-        [YamlIgnore]
+        [YamlMember(Alias = "id")]
         public int Id { get; set; }
 
         [YamlMember(Alias = "title")]
-        public string Title { get; set; }
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                _title = value;
+                Slug = Slugify.GenerateSlug(value);
+            }
+        }
 
         [YamlMember(Alias = "location")]
         public string Location { get; set; }
@@ -31,8 +40,11 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
         [YamlMember(Alias = "date")]
         public DateTime DateAdded { get; set; }
 
-        [YamlMember(Alias = "deleted")]
-        public bool Deleted { get; set; }
+        [YamlMember(Alias = "published")]
+        public bool Published { get; set; }
+
+        [YamlMember(Alias = "slug")]
+        public string Slug { get; set; }
 
         public override string ToString() => $"{Title} ({Location})";
     }

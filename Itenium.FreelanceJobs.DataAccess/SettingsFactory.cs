@@ -26,6 +26,9 @@ namespace Itenium.FreelanceJobs.DataAccess
                 GitBranch = _config["source:GitBranch"],
                 ClonePath = _config["source:ClonePath"],
                 JobsYaml = _config["source:JobsYaml"],
+                PageTemplate = _config["source:PageTemplate"],
+                PagesPath = _config["source:PagesPath"],
+                
             };
             return settings;
         }

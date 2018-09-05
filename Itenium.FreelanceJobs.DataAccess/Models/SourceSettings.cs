@@ -27,7 +27,21 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
             set => RelativeJobYaml = value;
         }
 
+        public string PageTemplate
+        {
+            get => Path.Combine(ClonePath, RelativePageTemplate);
+            set => RelativePageTemplate = value;
+        }
+
+        public string PagesPath
+        {
+            get => Path.Combine(ClonePath, RelativePagesPath);
+            set => RelativePagesPath = value;
+        }
+
         public string RelativeJobYaml { get; private set; }
+        public string RelativePageTemplate { get; private set; }
+        public string RelativePagesPath { get; private set; }
 
         public override string ToString() => $"{JobsYaml}";
     }

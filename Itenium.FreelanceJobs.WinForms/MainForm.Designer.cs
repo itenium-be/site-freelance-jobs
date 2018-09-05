@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dataSet1 = new System.Data.DataSet();
             this.dataTable1 = new System.Data.DataTable();
             this.TitleColumn = new System.Data.DataColumn();
@@ -37,6 +38,7 @@
             this.DateAddedColumn = new System.Data.DataColumn();
             this.DeletedColumn = new System.Data.DataColumn();
             this.IdGridColumn = new System.Data.DataColumn();
+            this.SlugColumn = new System.Data.DataColumn();
             this.FreelanceJobsGrid = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -47,6 +49,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.NewJobButton = new System.Windows.Forms.Button();
             this.TitleGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slug = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LocationGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DescriptionGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UsernameGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,7 +81,8 @@
             this.UsernameColumn,
             this.DateAddedColumn,
             this.DeletedColumn,
-            this.IdGridColumn});
+            this.IdGridColumn,
+            this.SlugColumn});
             this.dataTable1.TableName = "Table1";
             // 
             // TitleColumn
@@ -106,12 +110,16 @@
             // 
             // DeletedColumn
             // 
-            this.DeletedColumn.ColumnName = "Deleted";
+            this.DeletedColumn.ColumnName = "Published";
             this.DeletedColumn.DataType = typeof(bool);
             // 
             // IdGridColumn
             // 
             this.IdGridColumn.ColumnName = "Id";
+            // 
+            // SlugColumn
+            // 
+            this.SlugColumn.ColumnName = "Slug";
             // 
             // FreelanceJobsGrid
             // 
@@ -122,6 +130,7 @@
             this.FreelanceJobsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FreelanceJobsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TitleGridColumn,
+            this.Slug,
             this.LocationGridColumn,
             this.DescriptionGridColumn,
             this.UsernameGridColumn,
@@ -172,7 +181,7 @@
             this.groupBox2.Controls.Add(this.SeeDeletedCheckbox);
             this.groupBox2.Location = new System.Drawing.Point(209, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(392, 59);
+            this.groupBox2.Size = new System.Drawing.Size(418, 59);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filters";
@@ -200,11 +209,11 @@
             // 
             this.SeeDeletedCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SeeDeletedCheckbox.AutoSize = true;
-            this.SeeDeletedCheckbox.Location = new System.Drawing.Point(303, 26);
+            this.SeeDeletedCheckbox.Location = new System.Drawing.Point(301, 26);
             this.SeeDeletedCheckbox.Name = "SeeDeletedCheckbox";
-            this.SeeDeletedCheckbox.Size = new System.Drawing.Size(83, 17);
+            this.SeeDeletedCheckbox.Size = new System.Drawing.Size(111, 17);
             this.SeeDeletedCheckbox.TabIndex = 3;
-            this.SeeDeletedCheckbox.Text = "See &deleted";
+            this.SeeDeletedCheckbox.Text = "See not &published";
             this.SeeDeletedCheckbox.UseVisualStyleBackColor = true;
             this.SeeDeletedCheckbox.CheckedChanged += new System.EventHandler(this.SeeDeletedCheckbox_CheckedChanged);
             // 
@@ -220,9 +229,9 @@
             // NewJobButton
             // 
             this.NewJobButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewJobButton.Location = new System.Drawing.Point(20, 14);
+            this.NewJobButton.Location = new System.Drawing.Point(9, 14);
             this.NewJobButton.Name = "NewJobButton";
-            this.NewJobButton.Size = new System.Drawing.Size(172, 38);
+            this.NewJobButton.Size = new System.Drawing.Size(183, 38);
             this.NewJobButton.TabIndex = 0;
             this.NewJobButton.Text = "&New Job";
             this.NewJobButton.UseVisualStyleBackColor = true;
@@ -235,6 +244,13 @@
             this.TitleGridColumn.Name = "TitleGridColumn";
             this.TitleGridColumn.ReadOnly = true;
             this.TitleGridColumn.Width = 250;
+            // 
+            // Slug
+            // 
+            this.Slug.DataPropertyName = "Slug";
+            this.Slug.HeaderText = "Slug";
+            this.Slug.Name = "Slug";
+            this.Slug.Visible = false;
             // 
             // LocationGridColumn
             // 
@@ -267,8 +283,8 @@
             // 
             // DeletedGridColumn
             // 
-            this.DeletedGridColumn.DataPropertyName = "Deleted";
-            this.DeletedGridColumn.HeaderText = "Toggle deleted";
+            this.DeletedGridColumn.DataPropertyName = "Published";
+            this.DeletedGridColumn.HeaderText = "Toggle published";
             this.DeletedGridColumn.Name = "DeletedGridColumn";
             // 
             // EditGridColumn
@@ -292,6 +308,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 495);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Freelance Jobs";
@@ -328,7 +345,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button NewJobButton;
         private System.Data.DataColumn IdGridColumn;
+        private System.Data.DataColumn SlugColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleGridColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Slug;
         private System.Windows.Forms.DataGridViewTextBoxColumn LocationGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn UsernameGridColumn;

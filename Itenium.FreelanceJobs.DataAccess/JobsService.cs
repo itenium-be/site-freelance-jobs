@@ -46,12 +46,36 @@ namespace Itenium.FreelanceJobs.DataAccess
 
         public void SaveJobs(ICollection<FreelanceJob> jobs, FreelanceJob changedJob, ChangeType type)
         {
-            foreach (var job in jobs.Where(j => !string.IsNullOrWhiteSpace(j.Username)))
+            foreach (var job in jobs.Where(j => string.IsNullOrWhiteSpace(j.Username)))
                 job.Username = _creds.Username;
 
             PullRepo();
             WriteYaml(jobs);
+            WritePages(jobs);
             CommitAndPush(GetCommitMessage(changedJob, type));
+        }
+
+        private void WritePages(IEnumerable<FreelanceJob> jobs)
+        {
+            var dir = new DirectoryInfo(_settings.PagesPath);
+            foreach (var file in dir.EnumerateFiles("*.html"))
+            {
+                file.Delete();
+            }
+
+            var template = File.ReadAllText(_settings.PageTemplate);
+
+            var publishedJobs = jobs.Where(x => x.Published);
+            foreach (var job in publishedJobs)
+            {
+                var jobPage = template;
+                jobPage = jobPage.Replace("{id}", job.Id.ToString());
+                jobPage = jobPage.Replace("{slug}", job.Slug);
+                jobPage = jobPage.Replace("{title}", job.Title.Replace("\"", "\\\""));
+                jobPage = jobPage.Replace("{location}", job.Location);
+
+                File.WriteAllText(Path.Combine(dir.FullName, $"{job.Id}.html"), jobPage);
+            }
         }
 
         #region Yaml
