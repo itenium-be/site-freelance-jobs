@@ -23,7 +23,8 @@ namespace Itenium.FreelanceJobs.WinForms
 
         private void JobEditForm_Load(object sender, EventArgs e)
         {
-            var locs = new[] {"Gent",
+            var locs = new[] {
+                "Gent",
                 "Brussel",
                 "Antwerpen",
                 "Leuven",
@@ -38,7 +39,7 @@ namespace Itenium.FreelanceJobs.WinForms
                 "Vlaams Brabant"
             };
 
-            foreach (var loc in locs)
+            foreach (var loc in locs.OrderBy(x => x))
                 Location.Items.Add(loc);
         }
 
