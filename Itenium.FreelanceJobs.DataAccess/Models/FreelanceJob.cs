@@ -11,7 +11,7 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
         public FreelanceJob()
         {
             Id = ++_newId;
-            DateAdded = DateTime.Now.Date;
+            DateAdded = DateTime.Now;
         }
 
         [YamlMember(Alias = "id")]
