@@ -12,6 +12,7 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
             str = Regex.Replace(str, @"\s", "-");
             str = Regex.Replace(str, @"-+", "-");
             //str = str.Substring(0, str.Length <= 45 ? str.Length : 45).Trim();
+            str = str.Trim(' ', '-');
             return str;
         }
 
