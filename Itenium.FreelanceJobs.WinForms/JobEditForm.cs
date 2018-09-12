@@ -40,7 +40,7 @@ namespace Itenium.FreelanceJobs.WinForms
             };
 
             foreach (var loc in locs.OrderBy(x => x))
-                Location.Items.Add(loc);
+                LocationInput.Items.Add(loc);
         }
 
         public void SetJob(FreelanceJob job, Action<FreelanceJob> onChange = null)
@@ -59,8 +59,8 @@ namespace Itenium.FreelanceJobs.WinForms
             {
                 PublishButton.Text = "Save Changes";
             }
-            Location.Text = job.Location;
-            Title.Text = job.Title;
+            LocationInput.Text = job.Location;
+            TitleInput.Text = job.Title;
             Username.Text = job.Username;
             DateAdded.Value = job.DateAdded;
             Description.HtmlEditControl.DocumentText = job.Description;
@@ -73,8 +73,8 @@ namespace Itenium.FreelanceJobs.WinForms
 
         private void PublishButton_Click(object sender, EventArgs e)
         {
-            _job.Title = Title.Text;
-            _job.Location = Location.Text;
+            _job.Title = TitleInput.Text;
+            _job.Location = LocationInput.Text;
             _job.Description = Description.HtmlEditControl.DocumentText;
 
             _onChange?.Invoke(_job);

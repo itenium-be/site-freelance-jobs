@@ -33,8 +33,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.Title = new System.Windows.Forms.TextBox();
-            this.Location = new System.Windows.Forms.ComboBox();
+            this.TitleInput = new System.Windows.Forms.TextBox();
+            this.LocationInput = new System.Windows.Forms.ComboBox();
             this.Username = new System.Windows.Forms.TextBox();
             this.DateAdded = new System.Windows.Forms.DateTimePicker();
             this.JobDeletedInfoGroupbox = new System.Windows.Forms.GroupBox();
@@ -44,7 +44,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.PublishButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
             this.Description = new ZetaHtmlEditControl.UI.HtmlEditUserControl();
             this.JobDeletedInfoGroupbox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -90,24 +90,24 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Date added";
             // 
-            // Title
+            // TitleInput
             // 
-            this.Title.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TitleInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Title.Location = new System.Drawing.Point(107, 9);
-            this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(254, 22);
-            this.Title.TabIndex = 1;
+            this.TitleInput.Location = new System.Drawing.Point(107, 9);
+            this.TitleInput.Name = "TitleInput";
+            this.TitleInput.Size = new System.Drawing.Size(254, 22);
+            this.TitleInput.TabIndex = 1;
             // 
-            // Location
+            // LocationInput
             // 
-            this.Location.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.LocationInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Location.FormattingEnabled = true;
-            this.Location.Location = new System.Drawing.Point(109, 9);
-            this.Location.Name = "Location";
-            this.Location.Size = new System.Drawing.Size(254, 24);
-            this.Location.TabIndex = 2;
+            this.LocationInput.FormattingEnabled = true;
+            this.LocationInput.Location = new System.Drawing.Point(109, 9);
+            this.LocationInput.Name = "LocationInput";
+            this.LocationInput.Size = new System.Drawing.Size(254, 24);
+            this.LocationInput.TabIndex = 2;
             // 
             // Username
             // 
@@ -160,7 +160,7 @@
             this.panel2.Controls.Add(this.DateAdded);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.Location);
+            this.panel2.Controls.Add(this.LocationInput);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(394, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
@@ -170,7 +170,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.Title);
+            this.panel1.Controls.Add(this.TitleInput);
             this.panel1.Controls.Add(this.Username);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label3);
@@ -202,7 +202,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.PublishButton);
-            this.groupBox1.Controls.Add(this.CancelButton);
+            this.groupBox1.Controls.Add(this.CancelBtn);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 457);
             this.groupBox1.Name = "groupBox1";
@@ -222,17 +222,18 @@
             this.PublishButton.UseVisualStyleBackColor = true;
             this.PublishButton.Click += new System.EventHandler(this.PublishButton_Click);
             // 
-            // CancelButton
+            // CancelBtn
             // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancelButton.Location = new System.Drawing.Point(669, 19);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(119, 41);
-            this.CancelButton.TabIndex = 0;
-            this.CancelButton.Text = "Close";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelBtn.Location = new System.Drawing.Point(669, 19);
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.Size = new System.Drawing.Size(119, 41);
+            this.CancelBtn.TabIndex = 0;
+            this.CancelBtn.Text = "Close";
+            this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // Description
             // 
@@ -247,6 +248,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelBtn;
             this.ClientSize = new System.Drawing.Size(800, 529);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -271,8 +273,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox Location;
-        private System.Windows.Forms.TextBox Title;
+        private System.Windows.Forms.ComboBox LocationInput;
+        private System.Windows.Forms.TextBox TitleInput;
         private System.Windows.Forms.DateTimePicker DateAdded;
         private System.Windows.Forms.TextBox Username;
         private System.Windows.Forms.GroupBox JobDeletedInfoGroupbox;
@@ -282,7 +284,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button PublishButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button CancelBtn;
         private ZetaHtmlEditControl.UI.HtmlEditUserControl Description;
     }
 }
