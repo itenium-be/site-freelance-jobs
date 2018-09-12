@@ -203,8 +203,6 @@ namespace ZetaHtmlEditControl.UI
                 justifyCenterToolStripButton.Checked = htmlEditControl.IsJustifyCenter;
                 justifyRightToolStripButton.Checked = htmlEditControl.IsJustifyRight;
 
-                textModulesToolStripItem.Visible = htmlEditControl.HasTextModules;
-
                 _updateCount++;
 
                 // If WebBrowser is queried for the font properties at the initialization stage (updateCount==1)
@@ -380,15 +378,6 @@ namespace ZetaHtmlEditControl.UI
         private void underlineToolStripButton_Click(object sender, EventArgs e)
         {
             htmlEditControl.ExecuteUnderline();
-        }
-
-        private void textModulesToolStripItem_DropDownOpening(object sender, EventArgs e)
-        {
-            if (!_textModulesFilled)
-            {
-                _textModulesFilled = true;
-                htmlEditControl.FillTextModules(textModulesToolStripItem);
-            }
         }
 
         private void removeFormattingToolStripMenuItem_Click(object sender, EventArgs e)

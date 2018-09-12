@@ -33,7 +33,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HtmlEditUserControl));
             this.topToolStrip = new System.Windows.Forms.ToolStrip();
             this.undoToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.textModulesToolStripItem = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.boldToolStripMenuItem = new System.Windows.Forms.ToolStripButton();
             this.italicToolStripMenuItem = new System.Windows.Forms.ToolStripButton();
@@ -90,7 +89,6 @@
             this.topToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.topToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.undoToolStripButton,
-            this.textModulesToolStripItem,
             this.toolStripSeparator7,
             this.boldToolStripMenuItem,
             this.italicToolStripMenuItem,
@@ -121,13 +119,6 @@
             resources.ApplyResources(this.undoToolStripButton, "undoToolStripButton");
             this.undoToolStripButton.Name = "undoToolStripButton";
             this.undoToolStripButton.Click += new System.EventHandler(this.undoToolStripButton_Click);
-            // 
-            // textModulesToolStripItem
-            // 
-            this.textModulesToolStripItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.textModulesToolStripItem, "textModulesToolStripItem");
-            this.textModulesToolStripItem.Name = "textModulesToolStripItem";
-            this.textModulesToolStripItem.DropDownOpening += new System.EventHandler(this.textModulesToolStripItem_DropDownOpening);
             // 
             // toolStripSeparator7
             // 
@@ -481,7 +472,6 @@
 		private System.Windows.Forms.ToolStripButton undoToolStripButton;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
 		private System.Windows.Forms.ToolStripButton underlineToolStripButton;
-		private System.Windows.Forms.ToolStripDropDownButton textModulesToolStripItem;
         private System.Windows.Forms.ToolStripComboBox fontSizeToolStripComboBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripComboBox fontNameToolStripComboBox;

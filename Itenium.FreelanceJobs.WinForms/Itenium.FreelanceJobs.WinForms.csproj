@@ -123,9 +123,6 @@
     <Reference Include="YamlDotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\YamlDotNet.5.0.1\lib\net45\YamlDotNet.dll</HintPath>
     </Reference>
-    <Reference Include="ZetaHtmlEditControl">
-      <HintPath>..\HtmlEditor\Control\obj\Release\ZetaHtmlEditControl.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JobEditForm.cs">
@@ -177,6 +174,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HtmlEditor\Control\Control.csproj">
+      <Project>{b00ae765-8212-43fd-8e70-768a6c20ee93}</Project>
+      <Name>Control</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Itenium.FreelanceJobs.DataAccess\Itenium.FreelanceJobs.DataAccess.csproj">
       <Project>{0348b478-d29b-4834-8c8d-cedbaac1a65e}</Project>
       <Name>Itenium.FreelanceJobs.DataAccess</Name>
