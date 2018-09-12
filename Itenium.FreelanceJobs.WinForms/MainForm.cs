@@ -112,11 +112,6 @@ namespace Itenium.FreelanceJobs.WinForms
             frm.Show();
         }
 
-        private void SearchButton_Click(object sender, EventArgs e)
-        {
-            BindGrid();
-        }
-
         private void FreelanceJobsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // EDIT a FreelanceJob
@@ -184,6 +179,11 @@ namespace Itenium.FreelanceJobs.WinForms
                 return ("Delete", "Click Yes to remove this freelance job from the site.", "Click No to keep the job on the site.");
 
             return ("Restore", "Click Yes to put this freelance job back on the site.", "Click No to keep the job offline.");
+        }
+
+        private void SearchNeedle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            BindGrid();
         }
     }
 }
