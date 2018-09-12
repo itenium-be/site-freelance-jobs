@@ -5,12 +5,10 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
 {
     public class FreelanceJob
     {
-        private static int _newId;
         private string _title;
 
         public FreelanceJob()
         {
-            Id = ++_newId;
             DateAdded = DateTime.Now;
         }
 

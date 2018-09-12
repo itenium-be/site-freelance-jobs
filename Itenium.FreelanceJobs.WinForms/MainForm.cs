@@ -101,6 +101,7 @@ namespace Itenium.FreelanceJobs.WinForms
         {
             var frm = new JobEditForm();
             var job = new FreelanceJob();
+            job.Id = _jobs.Max(x => x.Id) + 1;
             job.Published = true;
             frm.SetJob(job, newJob =>
             {
