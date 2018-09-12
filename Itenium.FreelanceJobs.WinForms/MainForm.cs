@@ -48,7 +48,7 @@ namespace Itenium.FreelanceJobs.WinForms
             var dt = dataSet1.Tables[0];
             dt.Clear();
             var jobs = GetJobs();
-            foreach (var job in jobs)
+            foreach (var job in jobs.OrderByDescending(x => x.DateAdded))
             {
                 var row = dt.NewRow();
                 row[nameof(FreelanceJob.Id)] = job.Id;
