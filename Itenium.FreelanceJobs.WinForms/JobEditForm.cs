@@ -73,7 +73,7 @@ namespace Itenium.FreelanceJobs.WinForms
 
         private void PublishButton_Click(object sender, EventArgs e)
         {
-            _job.Title = TitleInput.Text;
+            _job.Title = TitleInput.Text.First().ToString().ToUpperInvariant() + TitleInput.Text.Substring(1);
             _job.Location = LocationInput.Text;
             _job.Description = Description.HtmlEditControl.DocumentText;
 
