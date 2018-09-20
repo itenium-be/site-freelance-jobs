@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Itenium.FreelanceJobs.DataAccess;
 using Itenium.FreelanceJobs.DataAccess.Models;
+using AutoUpdaterDotNET;
 
 namespace Itenium.FreelanceJobs.WinForms
 {
@@ -25,6 +26,12 @@ namespace Itenium.FreelanceJobs.WinForms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            AutoUpdater.ShowSkipButton = false;
+            AutoUpdater.ShowRemindLaterButton = false;
+            AutoUpdater.Mandatory = true;
+            AutoUpdater.RunUpdateAsAdmin = false;
+            AutoUpdater.Start(Properties.Settings.Default.AutoUpdateUrl);
+
             _service = JobsServiceFactory.GetService();
             _jobs = _service.GetJobs().ToList();
 

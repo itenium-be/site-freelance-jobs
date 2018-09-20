@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autoupdater.NET.Official" Version="1.4.11" />
     <PackageReference Include="libgit2sharp" Version="0.25.2" />
     <PackageReference Include="YamlDotNet" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />

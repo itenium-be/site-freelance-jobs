@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{CCB52E11-A49B-4719-A6DE-96610AA1F7D8}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		_SharedAssemblyInfo.cs = _SharedAssemblyInfo.cs
+		FreelanceJobsVersion.xml = FreelanceJobsVersion.xml
 		README.md = README.md
 	EndProjectSection
 EndProject
