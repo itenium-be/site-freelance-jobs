@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,6 +35,9 @@ namespace Itenium.FreelanceJobs.WinForms
 
             _service = JobsServiceFactory.GetService();
             _jobs = _service.GetJobs().ToList();
+
+            Version version = Assembly.GetEntryAssembly().GetName().Version;
+            Text += $" (v{version})";
 
             ConfigureGrid();
             BindGrid();
