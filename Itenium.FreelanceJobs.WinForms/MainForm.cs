@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,8 @@ namespace Itenium.FreelanceJobs.WinForms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) 
+                | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
             AutoUpdater.ShowSkipButton = false;
             AutoUpdater.ShowRemindLaterButton = false;
             AutoUpdater.Mandatory = true;
