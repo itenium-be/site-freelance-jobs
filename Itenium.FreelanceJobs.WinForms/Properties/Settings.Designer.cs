@@ -25,7 +25,8 @@ namespace Itenium.FreelanceJobs.WinForms.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://itenium.be/jobs/freelance/FreelanceJobs.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/itenium-be/site-freelance-jobs/master/Freelance" +
+            "JobsVersion.xml")]
         public string AutoUpdateUrl {
             get {
                 return ((string)(this["AutoUpdateUrl"]));
