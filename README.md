@@ -15,6 +15,7 @@ Create a build script for this next time!
 
 - Update version in `_SharedAssemblyInfo.cs`
 - Update version in `FreelanceJobsVersion.xml` (2 times!)
+- git tag v1.2.0.0
 - Create Github release with version (format: v1.2.0.0)
 - Add `FreelanceJobs.zip` to the Github release.
 	- Create a **Release** build
