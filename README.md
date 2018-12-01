@@ -14,6 +14,10 @@ AutoUpdater
 Create a build script for this next time!
 
 - Update version in `_SharedAssemblyInfo.cs`
-- Update version in `FreelanceJobsVersion.xml`
-- Create Github release with version
+- Update version in `FreelanceJobsVersion.xml` (2 times!)
+- Create Github release with version (format: v1.2.0.0)
 - Add `FreelanceJobs.zip` to the Github release.
+	- Create a **Release** build
+	- If the `Jobs` (git clone) is there, delete it
+	- Control + Win + Z in `bin\Release`
+	- Rename and attach as binary to the release
