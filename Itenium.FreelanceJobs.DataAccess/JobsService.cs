@@ -64,11 +64,11 @@ namespace Itenium.FreelanceJobs.DataAccess
             }
 
             var template = File.ReadAllText(_settings.PageTemplate);
+            var templateDeleted = File.ReadAllText(_settings.PageTemplateDeleted);
 
-            var publishedJobs = jobs.Where(x => x.Published);
-            foreach (var job in publishedJobs)
+            foreach (var job in jobs)
             {
-                var jobPage = template;
+                var jobPage = job.Published ? template : templateDeleted;
                 jobPage = jobPage.Replace("{id}", job.Id.ToString());
                 jobPage = jobPage.Replace("{slug}", job.Slug);
                 jobPage = jobPage.Replace("{title}", job.Title.Replace("\"", "\\\""));

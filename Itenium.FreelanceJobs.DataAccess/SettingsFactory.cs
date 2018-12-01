@@ -27,6 +27,7 @@ namespace Itenium.FreelanceJobs.DataAccess
                 ClonePath = _config["source:ClonePath"],
                 JobsYaml = _config["source:JobsYaml"],
                 PageTemplate = _config["source:PageTemplate"],
+                PageTemplateDeleted = _config["source:PageTemplateDeleted"],
                 PagesPath = _config["source:PagesPath"],
                 
             };
