@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Itenium.FreelanceJobs.DataAccess.Models;
 using LibGit2Sharp;
 using LibGit2Sharp.Handlers;
@@ -29,6 +31,7 @@ namespace Itenium.FreelanceJobs.DataAccess
             _settings = settings;
         }
 
+        #region Getting
         public IEnumerable<FreelanceJob> GetJobs()
         {
             if (!Directory.Exists(_settings.ClonePath))
@@ -43,16 +46,27 @@ namespace Itenium.FreelanceJobs.DataAccess
             var freelanceJobs = ReadYaml();
             return freelanceJobs;
         }
+        #endregion
 
+        #region Saving
         public void SaveJobs(ICollection<FreelanceJob> jobs, FreelanceJob changedJob, ChangeType type)
         {
+            //var sw = Stopwatch.StartNew();
+
             foreach (var job in jobs.Where(j => string.IsNullOrWhiteSpace(j.Username)))
                 job.Username = _creds.Username;
 
             PullRepo();
             WriteYaml(jobs);
             WritePages(jobs);
-            CommitAndPush(GetCommitMessage(changedJob, type));
+
+            //sw.Stop();
+            //var elapsed = sw.Elapsed.ToString("g");
+            //Debug.WriteLine("Elapsed: " + elapsed);
+
+            //sw.Restart();
+            Task.Run(() => CommitAndPush(GetCommitMessage(changedJob, type)));
+            //var elapsedPushTime = sw.Elapsed.ToString("g");
         }
 
         private void WritePages(IEnumerable<FreelanceJob> jobs)
@@ -77,6 +91,7 @@ namespace Itenium.FreelanceJobs.DataAccess
                 File.WriteAllText(Path.Combine(dir.FullName, $"{job.Id}.html"), jobPage);
             }
         }
+        #endregion
 
         #region Yaml
         private IEnumerable<FreelanceJob> ReadYaml()
@@ -119,8 +134,11 @@ namespace Itenium.FreelanceJobs.DataAccess
             }
         }
 
+        private static readonly object GitPushLock = new object();
+
         private void CommitAndPush(string commitMsg)
         {
+            lock (GitPushLock)
             using (var repo = new Repository(_settings.ClonePath))
             {
                 // STAGE & COMMIT
