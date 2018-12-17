@@ -2,7 +2,7 @@
 
 namespace Itenium.FreelanceJobs.DataAccess.Models
 {
-    public class Slugify
+    internal class Slugify
     {
         public static string GenerateSlug(string phrase)
         {

@@ -1,6 +1,6 @@
 ﻿namespace Itenium.FreelanceJobs.DataAccess.Models
 {
-    public class GitCredentials
+    internal class GitCredentials
     {
         public string Username { get; set; }
         public string Email { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Itenium.FreelanceJobs.DataAccess.Models
 {
-    public class SourceSettings
+    internal class SourceSettings
     {
         private string _clonePath;
         private readonly string _basePath;

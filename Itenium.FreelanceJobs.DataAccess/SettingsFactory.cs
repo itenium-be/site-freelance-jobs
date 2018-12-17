@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Itenium.FreelanceJobs.DataAccess
 {
-    public class SettingsFactory
+    internal class SettingsFactory
     {
         private readonly IConfigurationRoot _config;
 

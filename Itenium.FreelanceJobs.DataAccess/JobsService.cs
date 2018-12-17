@@ -13,14 +13,7 @@ using YamlDotNet.Serialization;
 
 namespace Itenium.FreelanceJobs.DataAccess
 {
-    public enum ChangeType
-    {
-        Published,
-        Updated,
-        Removed,
-    }
-
-    public class JobsService
+    internal class JobsService : IJobsService
     {
         private readonly GitCredentials _creds;
         private readonly SourceSettings _settings;
@@ -99,8 +92,8 @@ namespace Itenium.FreelanceJobs.DataAccess
             var deserializer = new DeserializerBuilder().Build();
             using (var file = File.OpenText(_settings.JobsYaml))
             {
-                var jobs = deserializer.Deserialize<IEnumerable<FreelanceJob>>(file);
-                return jobs;
+                var jobs = deserializer.Deserialize<IEnumerable<FreelanceJobDto>>(file);
+                return jobs.Select(MapToModel());
             }
         }
 
@@ -108,7 +101,43 @@ namespace Itenium.FreelanceJobs.DataAccess
         {
             var serializer = new SerializerBuilder().Build();
             using (var file = File.CreateText(_settings.JobsYaml))
-                serializer.Serialize(file, jobs);
+            {
+                var yamlJobs = jobs.Select(MapToDto());
+                serializer.Serialize(file, yamlJobs);
+            }
+        }
+        #endregion
+
+        #region Mapping
+        private static Func<FreelanceJobDto, FreelanceJob> MapToModel()
+        {
+            return yamlJob => new FreelanceJob()
+            {
+                DateAdded = yamlJob.DateAdded,
+                Description = yamlJob.Description,
+                Id = yamlJob.Id,
+                Location = yamlJob.Location,
+                Title = yamlJob.Title,
+                UnpublishDate = yamlJob.UnpublishDate,
+                Username = yamlJob.Username,
+                Slug = yamlJob.Slug,
+            };
+        }
+
+        private static Func<FreelanceJob, FreelanceJobDto> MapToDto()
+        {
+            return modelJob => new FreelanceJobDto()
+            {
+                DateAdded = modelJob.DateAdded,
+                Description = modelJob.Description,
+                Id = modelJob.Id,
+                Location = modelJob.Location,
+                Title = modelJob.Title,
+                UnpublishDate = modelJob.UnpublishDate,
+                Username = modelJob.Username,
+                Slug = modelJob.Slug,
+                Published = modelJob.Published,
+            };
         }
         #endregion
 

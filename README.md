@@ -8,6 +8,20 @@ Configuration in `appsettings.json`.
 Requires a user with access to [itenium-be/itenium-be.github.io](https://github.com/itenium-be/itenium-be.github.io)
 to be logged in with the [Git-Credential-Manager-for-Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
 
+Adding a property
+-----------------
+
+- Add prop to `FreelanceJob` and `FreelanceJobDto`
+- Update JobsService: MapToDto() & MapToModel()
+- MainForm Code: Mapping in BindGrid()
+- MainForm Designer: Add column to `dataSet1` and `FreelanceJobsGrid`
+- JobEditForm: Mapping in SetJob() and PublishButton_Click()
+
+
+### Adding a Location
+
+Add in `JobEditForm_Load`
+
 AutoUpdater
 -----------
 

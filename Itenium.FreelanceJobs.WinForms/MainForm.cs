@@ -18,7 +18,7 @@ namespace Itenium.FreelanceJobs.WinForms
 {
     public partial class MainForm : Form
     {
-        private JobsService _service;
+        private IJobsService _service;
         private ICollection<FreelanceJob> _jobs;
 
         public MainForm()
@@ -71,6 +71,7 @@ namespace Itenium.FreelanceJobs.WinForms
                 row[nameof(FreelanceJob.Description)] = job.Description;
                 row[nameof(FreelanceJob.Username)] = job.Username;
                 row[nameof(FreelanceJob.DateAdded)] = job.DateAdded;
+                row[nameof(FreelanceJob.UnpublishDate)] = job.UnpublishDate;
                 row[nameof(FreelanceJob.Published)] = job.Published;
                 row[nameof(FreelanceJob.Slug)] = job.Slug;
                 dt.Rows.Add(row);

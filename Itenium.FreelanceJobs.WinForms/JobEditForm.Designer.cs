@@ -46,6 +46,8 @@
             this.PublishButton = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.Description = new ZetaHtmlEditControl.UI.HtmlEditUserControl();
+            this.UnpublishDate = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
             this.JobDeletedInfoGroupbox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -135,7 +137,7 @@
             this.JobDeletedInfoGroupbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.JobDeletedInfoGroupbox.Location = new System.Drawing.Point(3, 3);
             this.JobDeletedInfoGroupbox.Name = "JobDeletedInfoGroupbox";
-            this.JobDeletedInfoGroupbox.Size = new System.Drawing.Size(794, 94);
+            this.JobDeletedInfoGroupbox.Size = new System.Drawing.Size(794, 119);
             this.JobDeletedInfoGroupbox.TabIndex = 1;
             this.JobDeletedInfoGroupbox.TabStop = false;
             // 
@@ -152,11 +154,13 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(788, 73);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(788, 98);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.UnpublishDate);
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.DateAdded);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
@@ -165,7 +169,7 @@
             this.panel2.Location = new System.Drawing.Point(394, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(394, 73);
+            this.panel2.Size = new System.Drawing.Size(394, 98);
             this.panel2.TabIndex = 1;
             // 
             // panel1
@@ -178,7 +182,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(394, 73);
+            this.panel1.Size = new System.Drawing.Size(394, 98);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -193,7 +197,7 @@
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 529);
@@ -239,10 +243,28 @@
             // 
             this.Description.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Description.IsToolbarVisible = true;
-            this.Description.Location = new System.Drawing.Point(3, 103);
+            this.Description.Location = new System.Drawing.Point(3, 128);
             this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(794, 348);
+            this.Description.Size = new System.Drawing.Size(794, 323);
             this.Description.TabIndex = 3;
+            // 
+            // UnpublishDate
+            // 
+            this.UnpublishDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.UnpublishDate.Location = new System.Drawing.Point(110, 65);
+            this.UnpublishDate.Name = "UnpublishDate";
+            this.UnpublishDate.Size = new System.Drawing.Size(253, 22);
+            this.UnpublishDate.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 68);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 16);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Unpublish";
             // 
             // JobEditForm
             // 
@@ -286,5 +308,7 @@
         private System.Windows.Forms.Button PublishButton;
         private System.Windows.Forms.Button CancelBtn;
         private ZetaHtmlEditControl.UI.HtmlEditUserControl Description;
+        private System.Windows.Forms.DateTimePicker UnpublishDate;
+        private System.Windows.Forms.Label label5;
     }
 }

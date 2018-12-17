@@ -40,15 +40,6 @@
             this.IdGridColumn = new System.Data.DataColumn();
             this.SlugColumn = new System.Data.DataColumn();
             this.FreelanceJobsGrid = new System.Windows.Forms.DataGridView();
-            this.TitleGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Slug = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LocationGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescriptionGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UsernameGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateAddedGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeletedGridColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.EditGridColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -56,6 +47,17 @@
             this.SeeDeletedCheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.NewJobButton = new System.Windows.Forms.Button();
+            this.dataColumn1 = new System.Data.DataColumn();
+            this.TitleGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Slug = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocationGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescriptionGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UsernameGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateAddedGridColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnpublishDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeletedGridColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.EditGridColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FreelanceJobsGrid)).BeginInit();
@@ -81,7 +83,8 @@
             this.DateAddedColumn,
             this.DeletedColumn,
             this.IdGridColumn,
-            this.SlugColumn});
+            this.SlugColumn,
+            this.dataColumn1});
             this.dataTable1.TableName = "Table1";
             // 
             // TitleColumn
@@ -134,6 +137,7 @@
             this.DescriptionGridColumn,
             this.UsernameGridColumn,
             this.DateAddedGridColumn,
+            this.UnpublishDate,
             this.DeletedGridColumn,
             this.EditGridColumn,
             this.Id});
@@ -146,71 +150,6 @@
             this.FreelanceJobsGrid.TabIndex = 4;
             this.FreelanceJobsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.FreelanceJobsGrid_CellContentClick);
             this.FreelanceJobsGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.FreelanceJobsGrid_CellValueChanged);
-            // 
-            // TitleGridColumn
-            // 
-            this.TitleGridColumn.DataPropertyName = "Title";
-            this.TitleGridColumn.HeaderText = "Title";
-            this.TitleGridColumn.Name = "TitleGridColumn";
-            this.TitleGridColumn.ReadOnly = true;
-            this.TitleGridColumn.Width = 250;
-            // 
-            // Slug
-            // 
-            this.Slug.DataPropertyName = "Slug";
-            this.Slug.HeaderText = "Slug";
-            this.Slug.Name = "Slug";
-            this.Slug.Visible = false;
-            // 
-            // LocationGridColumn
-            // 
-            this.LocationGridColumn.DataPropertyName = "Location";
-            this.LocationGridColumn.HeaderText = "Location";
-            this.LocationGridColumn.Name = "LocationGridColumn";
-            this.LocationGridColumn.ReadOnly = true;
-            // 
-            // DescriptionGridColumn
-            // 
-            this.DescriptionGridColumn.DataPropertyName = "Description";
-            this.DescriptionGridColumn.HeaderText = "Description";
-            this.DescriptionGridColumn.Name = "DescriptionGridColumn";
-            this.DescriptionGridColumn.ReadOnly = true;
-            this.DescriptionGridColumn.Width = 200;
-            // 
-            // UsernameGridColumn
-            // 
-            this.UsernameGridColumn.DataPropertyName = "Username";
-            this.UsernameGridColumn.HeaderText = "Username";
-            this.UsernameGridColumn.Name = "UsernameGridColumn";
-            this.UsernameGridColumn.ReadOnly = true;
-            // 
-            // DateAddedGridColumn
-            // 
-            this.DateAddedGridColumn.DataPropertyName = "DateAdded";
-            this.DateAddedGridColumn.HeaderText = "DateAdded";
-            this.DateAddedGridColumn.Name = "DateAddedGridColumn";
-            this.DateAddedGridColumn.ReadOnly = true;
-            // 
-            // DeletedGridColumn
-            // 
-            this.DeletedGridColumn.DataPropertyName = "Published";
-            this.DeletedGridColumn.HeaderText = "Toggle published";
-            this.DeletedGridColumn.Name = "DeletedGridColumn";
-            // 
-            // EditGridColumn
-            // 
-            this.EditGridColumn.HeaderText = "Edit";
-            this.EditGridColumn.Name = "EditGridColumn";
-            this.EditGridColumn.Text = "Edit";
-            this.EditGridColumn.UseColumnTextForButtonValue = true;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
             // 
             // tableLayoutPanel1
             // 
@@ -290,6 +229,84 @@
             this.NewJobButton.UseVisualStyleBackColor = true;
             this.NewJobButton.Click += new System.EventHandler(this.NewJobButton_Click);
             // 
+            // dataColumn1
+            // 
+            this.dataColumn1.Caption = "Unpublish date";
+            this.dataColumn1.ColumnName = "UnpublishDate";
+            // 
+            // TitleGridColumn
+            // 
+            this.TitleGridColumn.DataPropertyName = "Title";
+            this.TitleGridColumn.HeaderText = "Title";
+            this.TitleGridColumn.Name = "TitleGridColumn";
+            this.TitleGridColumn.ReadOnly = true;
+            this.TitleGridColumn.Width = 250;
+            // 
+            // Slug
+            // 
+            this.Slug.DataPropertyName = "Slug";
+            this.Slug.HeaderText = "Slug";
+            this.Slug.Name = "Slug";
+            this.Slug.Visible = false;
+            // 
+            // LocationGridColumn
+            // 
+            this.LocationGridColumn.DataPropertyName = "Location";
+            this.LocationGridColumn.HeaderText = "Location";
+            this.LocationGridColumn.Name = "LocationGridColumn";
+            this.LocationGridColumn.ReadOnly = true;
+            // 
+            // DescriptionGridColumn
+            // 
+            this.DescriptionGridColumn.DataPropertyName = "Description";
+            this.DescriptionGridColumn.HeaderText = "Description";
+            this.DescriptionGridColumn.Name = "DescriptionGridColumn";
+            this.DescriptionGridColumn.ReadOnly = true;
+            this.DescriptionGridColumn.Width = 200;
+            // 
+            // UsernameGridColumn
+            // 
+            this.UsernameGridColumn.DataPropertyName = "Username";
+            this.UsernameGridColumn.HeaderText = "Username";
+            this.UsernameGridColumn.Name = "UsernameGridColumn";
+            this.UsernameGridColumn.ReadOnly = true;
+            this.UsernameGridColumn.Visible = false;
+            // 
+            // DateAddedGridColumn
+            // 
+            this.DateAddedGridColumn.DataPropertyName = "DateAdded";
+            this.DateAddedGridColumn.HeaderText = "Date added";
+            this.DateAddedGridColumn.Name = "DateAddedGridColumn";
+            this.DateAddedGridColumn.ReadOnly = true;
+            // 
+            // UnpublishDate
+            // 
+            this.UnpublishDate.DataPropertyName = "UnpublishDate";
+            this.UnpublishDate.HeaderText = "Unpublish date";
+            this.UnpublishDate.Name = "UnpublishDate";
+            this.UnpublishDate.Width = 110;
+            // 
+            // DeletedGridColumn
+            // 
+            this.DeletedGridColumn.DataPropertyName = "Published";
+            this.DeletedGridColumn.HeaderText = "Toggle published";
+            this.DeletedGridColumn.Name = "DeletedGridColumn";
+            // 
+            // EditGridColumn
+            // 
+            this.EditGridColumn.HeaderText = "Edit";
+            this.EditGridColumn.Name = "EditGridColumn";
+            this.EditGridColumn.Text = "Edit";
+            this.EditGridColumn.UseColumnTextForButtonValue = true;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,12 +350,14 @@
         private System.Windows.Forms.Button NewJobButton;
         private System.Data.DataColumn IdGridColumn;
         private System.Data.DataColumn SlugColumn;
+        private System.Data.DataColumn dataColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Slug;
         private System.Windows.Forms.DataGridViewTextBoxColumn LocationGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DescriptionGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn UsernameGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateAddedGridColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnpublishDate;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DeletedGridColumn;
         private System.Windows.Forms.DataGridViewButtonColumn EditGridColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;

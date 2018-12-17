@@ -63,6 +63,7 @@ namespace Itenium.FreelanceJobs.WinForms
             TitleInput.Text = job.Title;
             Username.Text = job.Username;
             DateAdded.Value = job.DateAdded;
+            UnpublishDate.Value = job.UnpublishDate;
             Description.HtmlEditControl.DocumentText = job.Description;
         }
 
@@ -76,6 +77,7 @@ namespace Itenium.FreelanceJobs.WinForms
             _job.Title = TitleInput.Text.First().ToString().ToUpperInvariant() + TitleInput.Text.Substring(1);
             _job.Location = LocationInput.Text;
             _job.Description = Description.HtmlEditControl.DocumentText;
+            _job.UnpublishDate = UnpublishDate.Value;
 
             _onChange?.Invoke(_job);
             Close();

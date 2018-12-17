@@ -6,7 +6,7 @@ namespace Itenium.FreelanceJobs.DataAccess
 {
     public static class JobsServiceFactory
     {
-        public static JobsService GetService()
+        public static IJobsService GetService()
         {
             var setsFactory = new SettingsFactory();
             var creds = setsFactory.GetGitCredentials();
