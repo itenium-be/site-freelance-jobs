@@ -52,7 +52,7 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
 
         public string Slug { get; set; }
 
-
-        public override string ToString() => $"{Title} ({Location})";
+        
+        public override string ToString() => $"{Id}: {Title} ({Location})";
     }
 }
