@@ -18,7 +18,7 @@ namespace ZetaHtmlEditControl.UI
     {
         private const string DefaultFontValue = "---";
         private readonly float _initialTopHeight;
-        private bool _textModulesFilled;
+        //private bool _textModulesFilled;
         private int _updateCount;
 
         public HtmlEditUserControl()
