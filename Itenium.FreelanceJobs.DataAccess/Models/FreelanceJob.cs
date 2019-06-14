@@ -5,7 +5,7 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
 {
     public class FreelanceJob
     {
-        private static readonly TimeSpan DefaultPublishedTime = TimeSpan.FromDays(30);
+        private static readonly TimeSpan DefaultPublishedTime = TimeSpan.FromDays(60);
         private string _title;
         private DateTime _dateAdded;
 
