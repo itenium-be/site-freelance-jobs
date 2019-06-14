@@ -47,7 +47,7 @@ namespace Itenium.FreelanceJobs.DataAccess.Models
         public bool Published
         {
             get => DateTime.Now < UnpublishDate;
-            set => UnpublishDate = value ? _dateAdded.Add(DefaultPublishedTime) : DateTime.Now.Date;
+            set => UnpublishDate = value ? DateTime.Now.Date.Add(DefaultPublishedTime) : DateTime.Now.Date;
         }
 
         public string Slug { get; set; }

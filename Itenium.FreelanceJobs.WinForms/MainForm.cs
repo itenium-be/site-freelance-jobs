@@ -176,6 +176,8 @@ namespace Itenium.FreelanceJobs.WinForms
                 if (result == DialogResult.Yes)
                 {
                     job.Published = !job.Published;
+                    var row = FreelanceJobsGrid.Rows[e.RowIndex];
+                    row.Cells[UnpublishDate.Name].Value = job.UnpublishDate;
                     _service.SaveJobs(_jobs, job, toDelete ? ChangeType.Removed : ChangeType.Published);
                 }
                 else
